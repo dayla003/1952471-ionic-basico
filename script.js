@@ -1,10 +1,13 @@
-var campoTexto = document.getElementById("campoTxt");
+var userTxt = document.getElementById("userTxt");
+var passwordTxt = document.getElementById("passwordTxt");
+var parrafo = document.querySelector("p");
 
-function imprimirTexto() {
-  var texto = campoTexto.value;
-  console.log(texto);
+function iniciarSesion() {
+  var userValue = userTxt.value;
+  parrafo.innerHTML = `Log in correcto <strong>${userValue}</strong>`;
 }
 
-function borrarTexto() {
-  campoTexto.value = "";
+function registro() {
+  var userValue = userTxt.value;
+  parrafo.innerHTML = `Registro correcto <strong>${userValue}</strong>`;
 }
