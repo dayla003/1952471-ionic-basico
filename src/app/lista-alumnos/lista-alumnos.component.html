@@ -1,0 +1,18 @@
+<form #templateForm="ngForm" (ngSubmit)="agregaAlumno()">
+  <div>
+    <ion-label *ngIf="alumno.nombre">Nombre: {{ alumno.nombre }}</ion-label>
+  </div>
+  <ion-label>Nombre alumno:</ion-label>
+  <ion-input required [(ngModel)]="alumno.nombre" placeholder="Ejemplo: Dayla" name="nombre"></ion-input>
+  
+  <ion-label>
+    <ion-checkbox [(ngModel)]="alumno.presente" name="presente">Presente</ion-checkbox>
+  </ion-label>
+  <div>
+    <ion-button type="submit">Agregar</ion-button>
+  </div>
+  <div *ngIf="templateForm.invalid && (templateForm.dirty || templateForm.touched)" class="error-message">
+    El nombre es requerido
+  </div>
+</form>
+
