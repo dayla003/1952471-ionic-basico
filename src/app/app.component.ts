@@ -4,6 +4,7 @@ import { IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
 import { IonicModule } from '@ionic/angular';
 import { ListaAlumnosComponent } from './lista-alumnos/lista-alumnos.component';
 import { CommonModule } from '@angular/common';
+import { SplashScreen, SplashScreenPlugin } from '@capacitor/splash-screen';
 
 @Component({
   selector: 'app-root',
@@ -12,23 +13,16 @@ import { CommonModule } from '@angular/common';
   imports: [IonApp, IonicModule, ListaAlumnosComponent, CommonModule],
 })
 export class AppComponent {
-  constructor(public platform: Platform) {
-    this.initializeApp();
-  }
+ constructor() {
+  this.mostrarSplashScreen();
+ }
 
-  initializeApp() {
-    this.platform.ready().then(() => {
-      this.checkPlatform();
-    });
-  }
+async mostrarSplashScreen () {
+  //await SplashScreen.hide();
+  await SplashScreen.show({
+    autoHide: false,
+    showDuration: 2000
+  })
+ }
 
-  checkPlatform() {
-    if (this.platform.is('android')) {
-      console.log('La app se está ejecutando en Android');
-    } else if (this.platform.is('ios')) {
-      console.log('La app se está ejecutando en iOS');
-    } else if (this.platform.is('desktop')) {
-      console.log('La app se está ejecutando en un navegador web');
-    }
-  }
 }
